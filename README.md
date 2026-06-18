@@ -1,43 +1,43 @@
-AdventureWorks E-Commerce Performance & Customer Segmentation Analysis
+# AdventureWorks E-Commerce Sales Analysis (SQL)
 
 ## 📌 Project Overview
-This project presents an end-to-end SQL database analysis using the **AdventureWorks** relational database. The primary objective was to transition raw transactional data from multiple business departments (Sales, Production, Purchasing) into actionable commercial insights, culminating in a fully denormalized flat dataset ready for Business Intelligence workflows.
+The main goal was to take raw sales, product, and vendor data scattered across different tables and pull out useful business insights. At the end, I combined everything into one single "flat table" that is ready to be used for reports in Excel or Power BI.
 
 ---
 
-## 🛠️ Tech Stack & SQL Techniques Used
-* **Database Engine:** Microsoft SQL Server (T-SQL)
-* **Data Integration:** Complex Relational Joins (`INNER JOIN`, `LEFT JOIN`) spanning 5+ tables.
-* **Aggregations & Filtering:** High-level grouping (`GROUP BY`), dynamic aggregate filtering (`HAVING`), and precision formatting (`FORMAT`, `ROUND`).
-* **Advanced Analytics:** Nested Subqueries (statistical baseline comparisons) and dynamic data profiling using conditional logic (`CASE WHEN`).
+## 🛠️ SQL Techniques Used
+* **Joins:** Used `INNER JOIN` and `LEFT JOIN` to connect up to 5 tables together.
+* **Basic & Advanced Filtering:** Used `GROUP BY` to aggregate numbers and `HAVING` to filter grouped data.
+* **Logic & Subqueries:** Used `CASE WHEN` to categorize data and nested subqueries to compare figures against business averages.
 
 ---
 
-## 📊 Business Insights Discovered
+## Business Questions I Answered
 
-### 1. Financial Performance & Baseline KPIs
-* Established core sales infrastructure tracking Revenue, Order Volumes, and Unique Customer Base size.
-* Computed the **Average Order Value (AOV)** to benchmark customer transaction health and baseline operational capacity.
+### 1. Sales & Main KPIs
+* Found out the overall Total Revenue, total order numbers, and how many unique customers bought from the store.
+* Calculated the **Average Order Value (AOV)** to see how much money a customer spends on average per order.
 
-### 2. Basket Analysis & Product Grouping
-* Conducted a cross-selling metric evaluation by analyzing unique product counts per order to uncover volume shopping behavior.
-* Aggregated individual product performance at the **Subcategory** level to distinguish top-performing categories from low-velocity stock.
+### 2. Products & Subcategories
+* Analyzed the "shopping basket" to see how many different items people usually buy at once.
+* Grouped products by their **Subcategory** to see which types of products bring in the most money and which ones are not selling well.
 
-### 3. Advanced CRM & Customer Segmentation
-* **High-Value Base:** Isolated the Top 50 customers based on cumulative lifetime value to support loyalty target marketing.
-* **Behavioral Profiling:** Developed a dynamic tiering framework (`High`, `Medium`, `Low` Value) using conditional revenue bands.
-* **Leakage Detection:** Identified high-frequency but low-value customer clusters that generate disproportionate logistical costs relative to net sales.
+### 3. Customer Segments
+* Found the Top 50 VIP customers who spent the most money over time.
+* Created a customer tier system (`High`, `Medium`, `Low` Value) based on how much they spent.
+* Tracked down "low-value" customers who order very often but spend very little money, which might cause higher operational costs.
 
-### 4. Supply Chain Risk Management
-* Integrated vendor performance matrix metrics into the commercial data pipeline.
-* Used safe outer joining (`LEFT JOIN`) to preserve internal manufacturing datasets, allowing a complete risk assessment of supplier dependency vs. internal production.
-
----
-
-## 🗂️ Data Engineering & BI Readiness
-The project concludes with the engineering of a **fully denormalized Flat Table** combining data across all operational matrix dimensions. This optimized views model includes engineering a custom calculated column for **Estimated Profitability** and transactional sizing, ensuring the output is perfectly structured for immediate downstream analysis via Excel Pivot Tables, Power BI, or Tableau dashboards.
+### 4. Vendors & Supply Chain
+* Connected the vendor data using `LEFT JOIN` so I wouldn't lose products made internally by the company, helping to understand where products are coming from.
 
 ---
 
+## Final Dataset for BI (Task 20)
+For the final step, I built a large denormalized **Flat Table**. It merges orders, customers, products, categories, and vendors into one place. I also added a calculated column for **Estimated Profit** ($LineTotal - Cost$) and categorized orders by size (*Comanda Mare, Medie, Mica*), making it perfect for Excel Pivot Tables or Power BI dashboards.
+
+---
+
+## 📂 Repository Structure
+* `ecommerce-sql-analytics.sql`: The complete SQL script containing all 20 tasks, fully documented with comments.
 ## 📂 Repository Structure
 * `ecommerce-sql-analytics.sql`: Contains the fully documented production-ready SQL script structured across 5 progressive levels of analytical complexity.
